@@ -2,6 +2,7 @@
 phina.globalize();
 
 var label=[];
+    var choice=[];
 // MainScene クラスを定義
 phina.define('MainScene', {
   superClass: 'CanvasScene',
@@ -11,15 +12,11 @@ phina.define('MainScene', {
     // 背景色を指定
     this.backgroundColor = '#444';
 
-    /*
-    // ラベルを生成
-    this.label = Label('TITLE').addChildTo(this);
-    this.label.x = this.gridX.center(); // x 座標
-    this.label.y = this.gridY.center()/2; // y 座標
-    this.label.fill = 'white'; // 塗りつぶし色
-*/
 
-    var queue=group1;
+    var queue = group1;
+    var select = queue;
+    var r= Math.floor(Math.random()*queue.length);
+    var ans = queue[r];
 
     label=Label({
       x:640,
@@ -42,25 +39,57 @@ phina.define('MainScene', {
       }).addChildTo(self);
     }
 
-    //console.log(queue)
     var button = Button({
       width:200,
-      heght:50,
+      height:50,
       x:320,
       y:480,
       text:'再生',
     }).addChildTo(this);
 
+    var button2 = Button({
+      width:200,
+      height:50,
+      x:320,
+      y:580,
+      text:'NEXT',
+    }).addChildTo(this);
+
+
+    MakeButton();
+    ButtonText();
+    function MakeButton(){
+
+    for(var i=0; i<4; i++){
+      choice[i]=Button({
+        width:300,
+        height:20,
+        x:640*3/4,
+        y:960-120+30*i,
+        text:i,
+        fontSize:16,
+        fill:'blue',
+      }).addChildTo(self);
+    }
+
+  }
+
+  function ButtonText(){
+
+  for(var i=0; i<4; i++){
+    choice[i].text=queue[i];
+  }
+  choice[0].onclick=function(){console.log(choice[0].text)}
+  choice[1].onclick=function(){console.log(choice[1].text)}
+  choice[2].onclick=function(){console.log(choice[2].text)}
+  choice[3].onclick=function(){console.log(choice[3].text)}
+
+}
+
     button.onclick=function(){
-      if(!queue.length){this.exit();}
-      var r= Math.floor(Math.random()*queue.length);
-      //console.log(r)
-
-      var ans = queue.splice(r,1);
-      //var music = new Audio('sound/'+ ans +'.mp3');
-      //music.play();  // 再生
-
       console.log(ans);
+
+      SoundManager.play(ans);
       label.text=ans;
       for(var i=0; i<queue.length+1; i++){
         if(label[i]){label[i].remove();}
@@ -78,8 +107,17 @@ phina.define('MainScene', {
           align:"left",
         }).addChildTo(self);
       }
-
     };
+
+    button2.onclick=function(){
+      if(!queue.length){this.exit();}
+      queue.splice(r,1);
+      var r= Math.floor(Math.random()*queue.length);
+      ans = queue[r];
+      console.log(ans);
+    }
+
+
 
   },
 });
@@ -89,6 +127,7 @@ phina.main(function() {
   // アプリケーション生成
   var app = GameApp({
     startLabel: 'main', // メインシーンから開始する
+    assets: ASSETS
   });
   // アプリケーション実行
   app.run();

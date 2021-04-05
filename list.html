@@ -1,0 +1,30 @@
+z<!doctype html>
+
+<html>
+  <head>
+
+        <title>List</title>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- phina.js を読み込む -->
+    <script src='list.js'></script>
+    <!-- メイン処理 -->
+    <script type="text/javascript">
+
+        var t = '';
+      for(var i=0; i<group1.length; i++){
+        t+=("\'")+group1[i]+("\'");
+        t+=(" : ");
+        t+=("\'sound/")+group1[i]+(".mp3\'");
+        t+=",";
+        t+="<br>";
+      }
+      document.body.innerHTML=t;
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
