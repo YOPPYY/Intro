@@ -32,7 +32,7 @@ var ASSETS = {
     'SPEED MASTER' : 'sound/SPEED MASTER.mp3',
     'DIVE INTO STREAM' : 'sound/DIVE INTO STREAM.mp3',
     'Fate Seeker' : 'sound/Fate Seeker.mp3',
-    'oveRtaKerS feat.RYUICHI KAWAMURA × SUGIZO' : 'sound/oveRtaKerS feat.RYUICHI KAWAMURA × SUGIZO.mp3',
+    'oveRtaKerS' : 'sound/oveRtaKerS.mp3',
     'Raise Up' : 'sound/Raise Up.mp3',
     '夕愁想花' : 'sound/夕愁想花.mp3',
     'Outsoar The Rainbow' : 'sound/Outsoar The Rainbow.mp3',
@@ -72,7 +72,7 @@ var group1 = [
   'SPEED MASTER',
   'DIVE INTO STREAM',
   'Fate Seeker',
-  'oveRtaKerS feat.RYUICHI KAWAMURA × SUGIZO',
+  'oveRtaKerS',
   'Raise Up',
   '夕愁想花',
   'Outsoar The Rainbow'
